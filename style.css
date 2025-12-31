@@ -114,27 +114,3 @@ ul li {
 .theme-toggle:hover {
   color: var(--text);
 }
-
-.gif-tooltip {
-  position: relative;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-}
-
-.gif-tooltip img {
-  display: none;
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 8px;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  z-index: 100;
-}
-
-.gif-tooltip:hover img,
-.gif-tooltip:focus img {
-  display: block !important;
-}
