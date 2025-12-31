@@ -136,5 +136,5 @@ ul li {
 
 .gif-tooltip:hover img,
 .gif-tooltip:focus img {
-  display: block;
+  display: block !important;
 }
