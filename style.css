@@ -105,6 +105,13 @@ ul li {
   margin: 0 0 8px 0;
 }
 
+.year2 {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
 .theme-toggle {
   position: fixed;
   top: 20px;
