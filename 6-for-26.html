@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6 for 26</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">▲</button>
+  <a href="index.html" class="back">← Christian Boyle</a>
+  <h1>6 for 26</h1>
+  <p class="date">December 31, 2025</p>
+  <p>Lame New Year's advice is all about big resolutions, grinding harder, and chasing more. But <span class="gif-tooltip" tabindex="0">nah<img src="mike.gif" alt="nah"></span>, here are six flips for the big <b>2026</b>. ✨</p>
+
+<ol>
+  <li>Skip New Year's resolutions altogether
+    <p>Most crash and burn because they're chasing some perfect version of yourself. Instead, try one small experiment each month—no pressure, no overhaul. Tiny tweaks stick way better than January drama.</p>
+  </li>
+  <li>Make room for rest and boredom
+    <p>Hustle culture says go nonstop, but real creativity and energy come from doing nothing sometimes. In 2026, block off unscheduled time. Good ideas show up when you're not forcing them.</p>
+  </li>
+  <li>Do what feels like play to you
+    <p>Forget forcing "passion" or ambition. Find the stuff that energizes you naturally—however weird or boring it seems to others. That's where lasting success hides.</p>
+  </li>
+  <li>Get good at deep focus
+    <p>In a world full of AI shortcuts and multitasking, sustained attention is rare—and powerful. Train yourself to think, read, and write without distractions. It'll set you apart more than speed ever could.</p>
+  </li>
+  <li>Subtract before you add
+    <p>Everyone says stack more habits and goals. No, start by cutting what drains you: bad commitments, clutter, old baggage. Letting go often frees up more growth than piling on new stuff.</p>
+  </li>
+  <li>Prioritize real-life connections over digital ones
+    <p>Screens are easy, but in-person hangs and asks pay off way bigger (face-to-face requests work 34x better, apparently). In 2026, show up in the same room as people. That's where the good stuff happens.</p>
+  </li>
+</ol>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.querySelector('.theme-toggle');
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        btn.textContent = '▲';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        btn.textContent = '▼';
+      }
+    }
+    // Set initial icon
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      document.querySelector('.theme-toggle').textContent = '▼';
+    }
+  </script>
+  <script>
+    window.goatcounter = {
+      path: function(p) { return location.host + p }
+    }
+  </script>
+  <script 
+    data-goatcounter="https://cdb.goatcounter.com/count"
+    async 
+    src="//gc.zgo.at/count.js"
+  ></script>
+</body>
+</html>
+
