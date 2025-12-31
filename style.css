@@ -91,6 +91,13 @@ ul li {
   margin-bottom: 8px;
 }
 
+.post ol {
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(to bottom, #ff9be4, #5db3fd);
+  border-image-slice: 100%;
+  border-image-slice: 1;
+}
+
 .date {
   color: var(--text-muted);
   font-size: 13px;
