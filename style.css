@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'Public Sans';
+  src: url('webfonts/PublicSans-Regular.woff2') format('woff2'),
+       url('webfonts/PublicSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('webfonts/PublicSans-Italic.woff2') format('woff2'),
+       url('webfonts/PublicSans-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('webfonts/PublicSans-Bold.woff2') format('woff2'),
+       url('webfonts/PublicSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #fff;
+  --text: #111;
+  --text-muted: #666;
+}
+
+[data-theme="dark"] {
+  --bg: #111;
+  --text: #e0e0e0;
+  --text-muted: #888;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  margin: 0;
+  padding: 40px 20px;
+  max-width: 520px;
+  transition: background 0.2s, color 0.2s;
+}
+
+h1 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+}
+
+h2 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 32px 0 16px 0;
+}
+
+p {
+  margin: 0 0 16px 0;
+}
+
+a {
+  color: var(--text);
+}
+
+a:hover {
+  color: var(--text-muted);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+.date {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+}
