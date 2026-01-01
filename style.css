@@ -92,7 +92,7 @@ ul li {
 }
 
 .post ol {
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
   border-image: linear-gradient(to bottom, #ff9be4, #5db3fd);
   border-image-slice: 100%;
   border-image-slice: 1;
