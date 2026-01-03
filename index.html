@@ -5,44 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christian Boyle</title>
   <link rel="stylesheet" href="style.css">
-  <script>
-    if (localStorage.getItem('theme') === 'dark' || 
-        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  </script>
+  <script src="js/theme-init.js"></script>
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">▲</button>
   <h1><a href="https://christianboyle.com">Christian Boyle</a></h1>
+  <p class="year">2026</p>
+  <ul>
+    <li><a href="ai-is-the-internet-of-the-internet.html">AI is the Internet of the Internet</a></li>
+  </ul>
+  <br><br>
   <p class="year">2025</p>
   <ul>
     <li><a href="6-for-26.html">6 for 26</a></li>
   </ul>
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const btn = document.querySelector('.theme-toggle');
-      if (html.getAttribute('data-theme') === 'dark') {
-        html.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        btn.textContent = '▲';
-      } else {
-        html.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        btn.textContent = '▼';
-      }
-    }
-    // Set initial icon
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-      document.querySelector('.theme-toggle').textContent = '▼';
-    }
-  </script>
-  <script>
-    window.goatcounter = {
-      path: function(p) { return location.host + p }
-    }
-  </script>
+  <script src="js/theme.js"></script>
+  <script src="js/analytics.js"></script>
   <script 
     data-goatcounter="https://cdb.goatcounter.com/count"
     async 

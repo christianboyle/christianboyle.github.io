@@ -69,6 +69,12 @@ h2 {
   margin: 32px 0 16px 0;
 }
 
+.post h2, .post h3 {
+  margin: 32px 0 16px 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 p {
   margin: 8px 0 24px 0;
 }
@@ -91,11 +97,18 @@ ul li {
   margin-bottom: 8px;
 }
 
-.post ol {
+.gradient-border {
   border-left: 1px solid transparent;
-  border-image: linear-gradient(to bottom, #ff9be4, #5db3fd);
-  border-image-slice: 100%;
+  border-image: linear-gradient(to bottom, 
+    var(--gradient-top, #ff9be4), 
+    var(--gradient-bottom, #5db3fd)
+  );
   border-image-slice: 1;
+  padding-left: 16px;
+}
+
+ol.gradient-border {
+  padding-left: 40px;
 }
 
 .date {
@@ -131,4 +144,121 @@ ul li {
 
 .theme-toggle:hover {
   color: var(--text);
+}
+
+/* Footnotes */
+a.footnote {
+  text-decoration: none;
+}
+
+a.footnote sup {
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.footnotes {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.footnotes p {
+  margin: 8px 0;
+}
+
+.footnotes a {
+  color: var(--text-muted);
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.footnotes a:hover {
+  color: var(--text);
+}
+
+.footnotes a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-theme="dark"] .footnotes a::before {
+  background: linear-gradient(to right, 
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+.footnotes a.highlight::before {
+  left: 100%;
+}
+
+.footnotes a.highlight {
+  position: relative;
+  z-index: 0;
+}
+
+/* Image styling */
+.post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.post img:hover {
+  opacity: 0.9;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+  opacity: 1;
+}
+
+.lightbox img:hover {
+  opacity: 1;
 }
