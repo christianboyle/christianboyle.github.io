@@ -1,14 +1,23 @@
 // Lightbox functionality for images
 document.addEventListener('DOMContentLoaded', function() {
-  const lightboxImage = document.querySelector('.lightbox-image');
+  const lightboxImages = document.querySelectorAll('.lightbox-image');
   const lightbox = document.getElementById('lightbox');
   
-  if (lightboxImage && lightbox) {
-    // Open lightbox on image click
-    lightboxImage.addEventListener('click', function(e) {
-      e.stopPropagation();
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+  if (lightboxImages.length > 0 && lightbox) {
+    const lightboxImg = lightbox.querySelector('img');
+    
+    // Add click handlers to all lightbox images
+    lightboxImages.forEach(function(lightboxImage) {
+      lightboxImage.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Update lightbox image src and alt from clicked image
+        if (lightboxImg) {
+          lightboxImg.src = this.src;
+          lightboxImg.alt = this.alt;
+        }
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
     });
     
     // Close lightbox on background click

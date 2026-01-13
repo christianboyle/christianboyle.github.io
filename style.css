@@ -147,17 +147,17 @@ ol.gradient-border {
 }
 
 /* Footnotes */
-a.footnote {
+a.footnote, a.source {
   text-decoration: none;
 }
 
-a.footnote sup {
+a.footnote sup, a.source sup {
   font-size: 0.75em;
   vertical-align: super;
   line-height: 0;
 }
 
-.footnotes {
+.footnotes, .sources {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--text-muted);
@@ -165,22 +165,26 @@ a.footnote sup {
   font-size: 13px;
 }
 
-.footnotes p {
+.sources {
+  margin-top: 30px;
+}
+
+.footnotes p, .sources p {
   margin: 8px 0;
 }
 
-.footnotes a {
+.footnotes a, .sources a {
   color: var(--text-muted);
   position: relative;
   display: inline-block;
   overflow: hidden;
 }
 
-.footnotes a:hover {
+.footnotes a:hover, .sources a:hover {
   color: var(--text);
 }
 
-.footnotes a::before {
+.footnotes a::before, .sources a::before {
   content: '';
   position: absolute;
   top: 0;
@@ -197,7 +201,7 @@ a.footnote sup {
   z-index: 1;
 }
 
-[data-theme="dark"] .footnotes a::before {
+[data-theme="dark"] .footnotes a::before, [data-theme="dark"] .sources a::before {
   background: linear-gradient(to right, 
     transparent 0%,
     rgba(255, 255, 255, 0.2) 50%,
@@ -205,11 +209,11 @@ a.footnote sup {
   );
 }
 
-.footnotes a.highlight::before {
+.footnotes a.highlight::before, .sources a.highlight::before {
   left: 100%;
 }
 
-.footnotes a.highlight {
+.footnotes a.highlight, .sources a.highlight {
   position: relative;
   z-index: 0;
 }
