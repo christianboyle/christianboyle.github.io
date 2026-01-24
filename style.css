@@ -232,6 +232,21 @@ a.footnote sup, a.source sup {
   opacity: 0.9;
 }
 
+table, th, td {
+  border: 1px dotted #888;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 8px;
+}
+
+caption {
+  caption-side: top;
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 10px;
+}
+
 /* Lightbox */
 .lightbox {
   display: none;
@@ -263,21 +278,7 @@ a.footnote sup, a.source sup {
   opacity: 1;
 }
 
+
 .lightbox img:hover {
   opacity: 1;
-}
-
-table, th, td {
-  border: 1px dotted #888;
-  border-collapse: collapse;
-  text-align: left;
-  padding: 8px;
-}
-
-caption {
-  caption-side: top;
-  text-align: center;
-  padding-bottom: 10px;
-  font-weight: bold;
-  font-size: 10px;
 }
