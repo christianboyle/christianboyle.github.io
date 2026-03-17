@@ -283,3 +283,14 @@ caption {
   font-weight: bold;
   font-size: 10px;
 }
+
+.disclaimer {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.astronauts {
+  position: relative;
+  left: 15px;
+}
