@@ -54,6 +54,8 @@
   svg.in .area{opacity:.12}
   svg .dot{opacity:0;transition:opacity .5s ease}
   svg.in .dot{opacity:1;transition-delay:1.5s}
+  svg .anno{opacity:0;transition:opacity .5s ease;font-family:var(--sans)}
+  svg.in .anno{opacity:1;transition-delay:1.6s}
 
   .seg{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:6px 0 30px;font-family:var(--sans)}
   .seg button{font-family:var(--sans);font-size:14px;font-weight:600;padding:10px 16px;border:1px solid var(--rule);background:transparent;color:var(--muted);border-radius:30px;cursor:pointer;transition:all .25s}
@@ -167,8 +169,8 @@
       <div id="c-ai"></div>
     </div>
     <div class="panel">
-      <div class="plabel"><span class="pname" style="color:var(--gig)">Freelance / gig work</span><span class="pval">% of U.S. workforce</span></div>
-      <div class="psub">From ~34% in 2015 to ~42% today — over 70 million people — projected past 50% by 2027.</div>
+      <div class="plabel"><span class="pname" style="color:var(--gig)">Freelance / gig work</span><span class="pval">Millions of U.S. freelancers</span></div>
+      <div class="psub">54 million in 2015 to 72 million today — a third more people on the same pitch: flexibility without the career. <span style="color:var(--faint)">(Chart scaled 50–78M.)</span></div>
       <div id="c-gig"></div>
     </div>
     <div class="axis"><span>2015</span><span>2016</span><span>2017</span><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div>
@@ -295,19 +297,28 @@
   var series={
     glp:{color:'#d1495b', d:[0.1,0.1,0.15,0.2,0.3,1,2,3,4.5,5.8,12.4], max:13},
     ai:{color:'#2a6f97', d:[0,0,0,0,0,0.5,1,2,18,26,34], max:36},
-    gig:{color:'#e0900b', d:[34,35,36,35,35,36,36,39,38,40,42], max:55}
+    gig:{color:'#e0900b', d:[53.7,55,57.3,56.7,57,59,59,60,62,68,72], min:50, max:78, startLabel:'54M', endLabel:'72M'}
   };
   var W=920,H=92,padL=4,padR=4,padT=12,padB=10;
   function buildChart(id,s){
-    var n=s.d.length,plotW=W-padL-padR,plotH=H-padT-padB;
-    var pts=s.d.map(function(v,i){return [padL+(i/(n-1))*plotW, padT+plotH-(v/s.max)*plotH];});
+    var n=s.d.length,plotW=W-padL-padR,plotH=H-padT-padB,min=s.min||0,range=s.max-min;
+    function y(v){return padT+plotH-((v-min)/range)*plotH;}
+    var pts=s.d.map(function(v,i){return [padL+(i/(n-1))*plotW, y(v)];});
     var line=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' ');
-    var area=line+' L'+pts[n-1][0].toFixed(1)+' '+(H-padB)+' L'+pts[0][0].toFixed(1)+' '+(H-padB)+' Z';
-    var last=pts[n-1];
-    var svg='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" style="width:100%;height:92px;display:block">';
+    var floor=y(min);
+    var area=line+' L'+pts[n-1][0].toFixed(1)+' '+floor.toFixed(1)+' L'+pts[0][0].toFixed(1)+' '+floor.toFixed(1)+' Z';
+    var first=pts[0],last=pts[n-1];
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" style="width:100%;height:92px;display:block;overflow:visible">';
     svg+='<path class="area" d="'+area+'" fill="'+s.color+'"/>';
     svg+='<path class="line" d="'+line+'" stroke="'+s.color+'"/>';
+    if(s.startLabel){
+      svg+='<circle class="dot" cx="'+first[0].toFixed(1)+'" cy="'+first[1].toFixed(1)+'" r="3.5" fill="'+s.color+'" opacity=".55"/>';
+      svg+='<text class="anno" x="'+first[0].toFixed(1)+'" y="'+(first[1]-8).toFixed(1)+'" text-anchor="middle" font-size="11" font-weight="700" fill="'+s.color+'">'+s.startLabel+'</text>';
+    }
     svg+='<circle class="dot" cx="'+last[0].toFixed(1)+'" cy="'+last[1].toFixed(1)+'" r="4.5" fill="'+s.color+'"/>';
+    if(s.endLabel){
+      svg+='<text class="anno" x="'+last[0].toFixed(1)+'" y="'+(last[1]-10).toFixed(1)+'" text-anchor="end" font-size="11" font-weight="700" fill="'+s.color+'">'+s.endLabel+'</text>';
+    }
     svg+='</svg>';
     document.getElementById(id).innerHTML=svg;
   }
